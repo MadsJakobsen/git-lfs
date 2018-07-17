@@ -13,7 +13,9 @@ install:
   - cinst make
   - cpan App::cpanminus
   - cpanm TAP::Harness::Env
+  - perl -V
   - refreshenv
+  - perl -V
   - ps: |
       echo "Go directories in machine PATH environment:"
       [environment]::GetEnvironmentVariable("PATH","Machine").split(";") | Select-String -Pattern "\\go\\"
