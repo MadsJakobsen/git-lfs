@@ -12,7 +12,7 @@ install:
   - cinst InnoSetup -y
   - cinst make
   - cpan App::cpanminus
-  - cpanm TAP::Harness::Env
+  - cpanm App::Prove
   - perl -V
   - refreshenv
   - perl -V
