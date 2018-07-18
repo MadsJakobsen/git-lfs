@@ -17,5 +17,5 @@ pushd t >/dev/null
     PROVE="carton exec prove"
   fi
   VERBOSE_LOGS=1 make X="$X" clean \
-    && make X="$X" PROVE="PROVE" PROVE_EXTRA_ARGS=-j9
+    && make X="$X" PROVE="$PROVE" PROVE_EXTRA_ARGS=-j9
 popd >/dev/null
