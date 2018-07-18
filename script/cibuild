@@ -9,13 +9,8 @@ GIT_TRACE=1 GOCACHE=off script/test git
 pushd t >/dev/null
   UNAME=$(uname -s)
   X=""
-  PROVE="prove"
   if [[ $UNAME == MINGW* || $UNAME == MSYS* || $UNAME == CYGWIN* ]]; then
     X=".exe"
   fi
-  if [ -n "$APPVEYOR" ]; then
-    PROVE="carton exec prove"
-  fi
-  VERBOSE_LOGS=1 make X="$X" clean \
-    && make X="$X" PROVE="$PROVE" PROVE_EXTRA_ARGS=-j9
+  VERBOSE_LOGS=1 make X="$X" clean && make X="$X" PROVE_EXTRA_ARGS=-j9
 popd >/dev/null
