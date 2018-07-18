@@ -13,9 +13,11 @@ install:
   - cinst make
   - cmd: if not exist "C:\Strawberry" cinst strawberryperl
   - cmd: SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
-  - 'which prove'
-  - bash --login -c 'which prove'
   - refreshenv
+  - bash --login -c 'which prove'
+  - ls C:\strawberry\c\bin
+  - ls C:\strawberry\perl\site\bin
+  - ls C:\strawberry\perl\bin
   - ps: |
       echo "Go directories in machine PATH environment:"
       [environment]::GetEnvironmentVariable("PATH","Machine").split(";") | Select-String -Pattern "\\go\\"
