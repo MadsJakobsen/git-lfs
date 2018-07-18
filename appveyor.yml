@@ -11,11 +11,9 @@ install:
   - cinst golang --version 1.8.3 -y
   - cinst InnoSetup -y
   - cinst make
-  - ps: Invoke-WebRequest -Uri http://strawberryperl.com/download/5.26.1.1/strawberry-perl-5.26.1.1-64bit.msi -OutFile strawberry-perl-64bit.msi
-  - ps: Start-Process msiexec.exe -ArgumentList @("/package", "strawberry-perl-64bit.msi", "/qn", "INSTALLDIR=C:\strawberry") -Wait
-  - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
-  - cpanm --notest --quiet Carton
-  - refreshenv
+  - cmd: if not exist "C:\Strawberry" cinst strawberryperl
+  - cmd: SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
+  - ps: refreshenv
   - ps: |
       echo "Go directories in machine PATH environment:"
       [environment]::GetEnvironmentVariable("PATH","Machine").split(";") | Select-String -Pattern "\\go\\"
